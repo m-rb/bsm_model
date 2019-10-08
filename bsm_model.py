@@ -34,10 +34,10 @@ class BSM(object):
         vega = self.s0 * norm.pdf(self.d1) * np.sqrt(self.T)
         return delta, gamma, vega
 
-    def monte_carlo(self,type='c',number_of_sims):
+    def monte_carlo(self,option_type,number_of_sims):
         z = np.random.normal(size=number_of_sims)
         st = self.s0 * np.exp((self.r - self.q - (self.sigma ** 2)/2) * self.T + self.sigma * np.sqrt(self.T) * z)
-        if type == 'c':
+        if option_type == 'c':
             payoff = np.maximum(st - self.k,0)
         else: #type == 'p'
             payoff = np.maximum(self.k - st,0)
