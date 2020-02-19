@@ -11,7 +11,7 @@ class BSM(object):
         self.sigma = sigma
         self.r = r
         self.q = q
-        self.d1 = (math.log(s0/k) + (r - q + (sigma ** 2)/2) * T)
+        self.d1 = (math.log(s0/k) + (r - q + (sigma ** 2)/2) * T) / sigma * np.sqrt(T)
         self.d2 =  self.d1 - (sigma * np.sqrt(T))
 
     def call(self):
